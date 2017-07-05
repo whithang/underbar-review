@@ -355,7 +355,7 @@
     return function() {
       var argList = '';
       for (var i = 0; i < arguments.length; i++) {
-        if (i === 0){
+        if (i === 0) {
           argList += JSON.stringify(arguments[i]);
         } else {
           argList += ',' + JSON.stringify(arguments[i]);
@@ -379,6 +379,13 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
+    var argList = [];
+    for (var i = 2; i < arguments.length; i++) {
+      argList.push(arguments[i]);
+    }
+    setTimeout(function () {
+      func.apply(this, argList);
+    }, wait);
   };
 
 
