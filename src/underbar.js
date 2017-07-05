@@ -7,6 +7,7 @@
   // seem very useful, but remember it--if a function needs to provide an
   // iterator when the user does not pass one in, this will be handy.
   _.identity = function(val) {
+    return val;
   };
 
   /**
@@ -37,6 +38,11 @@
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
+    if (n > array.length) {
+      return array;
+    } else {
+      return n === undefined ? array[array.length - 1] : array.slice(array.length - n);
+    }
   };
 
   // Call iterator(value, key, collection) for each element of collection.
@@ -92,7 +98,7 @@
    * as an example of this.
    */
 
-  // Takes an array of objects and returns and array of the values of
+  // Takes an array of objects and returns an array of the values of
   // a certain property in it. E.g. take an array of people and return
   // an array of just their ages
   _.pluck = function(collection, key) {
@@ -107,19 +113,19 @@
   // Reduces an array or object to a single value by repetitively calling
   // iterator(accumulator, item) for each item. accumulator should be
   // the return value of the previous iterator call.
-  //  
+  //
   // You can pass in a starting value for the accumulator as the third argument
   // to reduce. If no starting value is passed, the first element is used as
   // the accumulator, and is never passed to the iterator. In other words, in
   // the case where a starting value is not passed, the iterator is not invoked
   // until the second element, with the first element as its second argument.
-  //  
+  //
   // Example:
   //   var numbers = [1,2,3];
   //   var sum = _.reduce(numbers, function(total, number){
   //     return total + number;
   //   }, 0); // should be 6
-  //  
+  //
   //   var identity = _.reduce([5], function(total, number){
   //     return total + number * number;
   //   }); // should be 5, regardless of the iterator function passed in
@@ -201,7 +207,7 @@
     return function() {
       if (!alreadyCalled) {
         // TIP: .apply(this, arguments) is the standard way to pass on all of the
-        // infromation from one function call to another.
+        // information from one function call to another.
         result = func.apply(this, arguments);
         alreadyCalled = true;
       }
