@@ -249,7 +249,7 @@
     // TIP: There's a very clever way to re-use every() here.
     var isTrue = false;
 
-    if (iterator === undefined){
+    if (iterator === undefined) {
       iterator = _.identity;
     }
 
@@ -284,7 +284,14 @@
   //   }, {
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
-  _.extend = function(obj) {
+  _.extend = function(obj1) {
+    for (var i = 1; i < arguments.length; i++) {
+      _.each(arguments[i], function(value, key) {
+        obj1[key] = value;
+      });
+    }
+
+    return obj1;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
