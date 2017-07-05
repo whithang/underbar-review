@@ -470,7 +470,7 @@
     describe('reduce', function() {
 
       checkForNativeMethods(function () {
-        _.reduce([3, 2, 1], function(accum, item) {return accum + item;});
+        _.reduce([3, 2, 1], function(accum, item) { return accum + item; });
       });
 
       it('should return a value', function() {
