@@ -121,7 +121,7 @@
     var duplicate = false;
     for (var i = 0; i < array.length; i++) {
       for (var j = 0; j < newArray.length; j++) {
-        if (array[i] === newArray[j]){
+        if (array[i] === newArray[j]) {
           duplicate = true;
         }
       }
@@ -141,6 +141,10 @@
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
     var newCollection = [];
+
+    _.each(collection, function(value, key) {
+      newCollection.push(iterator(value));
+    });
 
     return newCollection;
   };
