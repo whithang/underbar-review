@@ -247,6 +247,22 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+    var isTrue = false;
+
+    if (iterator === undefined){
+      iterator = _.identity;
+    }
+
+    if (collection.length === 0) {
+      return false;
+    } else {
+      return _.reduce(collection, function(accumulator, value) {
+        if (iterator(value) || isTrue === true) {
+          isTrue = true;
+        }
+        return isTrue;
+      }, false);
+    }
   };
 
 
