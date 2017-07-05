@@ -194,9 +194,17 @@
       accumulator = collection[0];
       i = 1;
     }
-    for (i; i < collection.length; i++) {
-      accumulator = iterator(accumulator, collection[i]);
+
+    if (Array.isArray(collection)) {
+      for (i; i < collection.length; i++) {
+        accumulator = iterator(accumulator, collection[i]);
+      }
+    } else {
+      for (var key in collection) {
+        accumulator = iterator(accumulator, collection[key]);
+      }
     }
+
     return accumulator;
   };
 
