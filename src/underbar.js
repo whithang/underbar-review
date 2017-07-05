@@ -190,11 +190,11 @@
   _.reduce = function(collection, iterator, accumulator) {
     var i = 0;
 
-    if (accumulator === undefined){
+    if (accumulator === undefined) {
       accumulator = collection[0];
       i = 1;
     }
-    for (i; i < collection.length; i++){
+    for (i; i < collection.length; i++) {
       accumulator = iterator(accumulator, collection[i]);
     }
     return accumulator;
